@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>DeepFake Detection System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="landing-container">
+        <div class="bg-grid"></div>
+        <div class="bg-radial"></div>
+        <div class="floating-elements">
+            <div class="float-circle"></div>
+            <div class="float-circle"></div>
+            <div class="float-circle"></div>
+        </div>
+
+        <header class="landing-header">
+            <div class="logo-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                <span>DeepFake</span>
+            </div>
+            <!-- Sign In / Get Started buttons intentionally removed -->
+        </header>
+
+        <main class="landing-main">
+            <div class="hero-content">
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    SYSTEM ACTIVE — READY TO SCAN
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="title-line">DEEPFAKE</span>
+                    <span class="title-line gradient-text">DETECTION SYSTEM</span>
+                </h1>
+
+                <p class="hero-description">
+                    Advanced forensic AI analyzes images and audio to detect synthetic media
+                    with precision. Powered by state-of-the-art transformer models.
+                </p>
+
+                <div class="scan-options">
+                    <a href="{{ url_for('image_scan') }}" class="scan-card">
+                        <div class="scan-card-inner">
+                            <div class="scan-icon image-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                                    <path d="M21 15l-5-5L5 21"/>
+                                </svg>
+                            </div>
+                            <div class="scan-info">
+                                <h3>Image Scan</h3>
+                                <p>Analyze images for AI manipulation</p>
+                            </div>
+                            <div class="model-badge image-badge">
+                                <span class="model-name">ViT-v2</span>
+                                <span class="model-accuracy">99.2% Accuracy</span>
+                            </div>
+                        </div>
+                        <div class="scan-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </a>
+
+                    <a href="{{ url_for('audio_scan') }}" class="scan-card">
+                        <div class="scan-card-inner">
+                            <div class="scan-icon audio-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                                    <line x1="12" y1="19" x2="12" y2="23"/>
+                                    <line x1="8" y1="23" x2="16" y2="23"/>
+                                </svg>
+                            </div>
+                            <div class="scan-info">
+                                <h3>Audio Scan</h3>
+                                <p>Detect synthetic voice generation</p>
+                            </div>
+                            <div class="model-badge audio-badge">
+                                <span class="model-name">Wav2Vec2</span>
+                                <span class="model-accuracy">98.8% Accuracy</span>
+                            </div>
+                        </div>
+                        <div class="scan-card-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="system-info">
+                    <span class="version">v1.0</span>
+                    <span class="separator">·</span>
+                    <span class="powered">Powered by Transformer Models</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

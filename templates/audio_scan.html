@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Audio Scan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="scan-page">
+        <div class="bg-grid"></div>
+        <div class="bg-radial"></div>
+
+        <header class="scan-header">
+            <a href="{{ url_for('landing') }}" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back
+            </a>
+            <h1 class="page-title">Audio Scan</h1>
+            <div class="header-spacer"></div>
+        </header>
+
+        <main class="scan-content">
+            <div class="upload-container" id="uploadContainer">
+                <div class="upload-zone audio-zone" id="uploadZone">
+                    <input type="file" id="fileInput" accept=".wav,.mp3,.flac,.ogg,.m4a" hidden>
+                    <div class="upload-content">
+                        <div class="upload-icon audio-upload-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                                <line x1="12" y1="19" x2="12" y2="23"/>
+                                <line x1="8" y1="23" x2="16" y2="23"/>
+                            </svg>
+                        </div>
+                        <p class="upload-text">Tap to select audio</p>
+                        <p class="upload-formats">WAV · MP3 · FLAC</p>
+                    </div>
+                    <div class="audio-preview" id="audioPreview" hidden>
+                        <div class="audio-waveform">
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                            <div class="wave-bar"></div>
+                        </div>
+                        <span class="audio-filename" id="audioFilename"></span>
+                        <button class="remove-btn" id="removeBtn" type="button">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"/>
+                                <line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-section">
+                <span class="model-label">DETECTION MODEL</span>
+                <div class="model-display audio-model">
+                    <span class="model-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </span>
+                    <span class="model-text">Wav2Vec2 — 98.8% Accuracy</span>
+                </div>
+            </div>
+
+            <button class="analyze-btn audio-btn" id="analyzeBtn" type="button" disabled>
+                <span class="btn-text">Analyze Audio</span>
+                <span class="btn-loader" hidden>
+                    <svg class="spinner" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none"/>
+                    </svg>
+                    Analyzing...
+                </span>
+            </button>
+
+            <div class="result-container" id="resultContainer" hidden>
+                <div class="result-header">
+                    <div class="result-icon" id="resultIcon"></div>
+                    <h2 class="result-title" id="resultTitle"></h2>
+                </div>
+                <div class="result-confidence">
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" id="confidenceFill"></div>
+                    </div>
+                    <span class="confidence-value" id="confidenceValue"></span>
+                </div>
+                <div class="result-details" id="resultDetails"></div>
+                <button class="new-scan-btn" id="newScanBtn" type="button">Check another</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>initAudioScan();</script>
+</body>
+</html>
